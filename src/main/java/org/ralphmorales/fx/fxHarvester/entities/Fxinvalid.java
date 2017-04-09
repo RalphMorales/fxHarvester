@@ -12,26 +12,23 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="fxinvalid")
 public class Fxinvalid {
 
 	private Long id;
 	private Date dateCreated;
 	private String invalidRecord;
-	private String cause;
 	private String fileName;	
 	
 	public Fxinvalid(){}
 	
-	public Fxinvalid(Date dateCreated, String invalidRecord, String cause, String fileName){
+	public Fxinvalid(Date dateCreated, String invalidRecord, String fileName){
 		this.dateCreated = dateCreated;
 		this.invalidRecord = invalidRecord;
-		this.cause = cause;
 		this.fileName = fileName;
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -55,14 +52,6 @@ public class Fxinvalid {
 	}
 	public void setInvalidRecord(String invalidRecord) {
 		this.invalidRecord = invalidRecord;
-	}
-	
-	@Column(name="cause", nullable=false)
-	public String getCause() {
-		return cause;
-	}
-	public void setCause(String cause) {
-		this.cause = cause;
 	}
 	
 	@Column(name="fileName", nullable=false)
