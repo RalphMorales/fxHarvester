@@ -7,10 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="accumulativeData")
 public class AccumulativeData {
 	
 	private Long id;
@@ -25,7 +23,7 @@ public class AccumulativeData {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long getId() {
 		return id;
 	}
@@ -51,7 +49,5 @@ public class AccumulativeData {
 	public void setCountOfDeals(Integer countOfDeals) {
 		this.countOfDeals = countOfDeals;
 	}
-
-	
 	
 }
