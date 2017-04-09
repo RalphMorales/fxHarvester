@@ -27,14 +27,14 @@ public class FxinvalidRepositoryTest {
 
 	@Test
 	public void save_01() throws Exception {
-		repository.save(new Fxinvalid(new Date(), "Invalid Record", "file path"));
+		repository.save(new Fxinvalid("Invalid Record", "file path"));
 		assertEquals(1, repository.count());
 	}
 
 	@Test
 	public void save_02() throws Exception {
-		repository.save(new Fxinvalid(new Date(), "Invalid Record", "file path"));
-		repository.save(new Fxinvalid(new Date(), "Invalid Record", "file path"));
+		repository.save(new Fxinvalid("Invalid Record", "file path"));
+		repository.save(new Fxinvalid("Invalid Record", "file path"));
 		assertEquals(2, repository.count());
 	}
 
@@ -42,9 +42,9 @@ public class FxinvalidRepositoryTest {
 	public void save_03() throws Exception {
 
 		List<Fxinvalid> Fxinvalids = new ArrayList<Fxinvalid>();
-		Fxinvalids.add(new Fxinvalid(new Date(), "Invalid Record", "file path"));
-		Fxinvalids.add(new Fxinvalid(new Date(), "Invalid Record", "file path"));
-		Fxinvalids.add(new Fxinvalid(new Date(), "Invalid Record", "file path"));
+		Fxinvalids.add(new Fxinvalid("Invalid Record", "file path"));
+		Fxinvalids.add(new Fxinvalid("Invalid Record", "file path"));
+		Fxinvalids.add(new Fxinvalid("Invalid Record", "file path"));
 
 		repository.save(Fxinvalids);
 		assertEquals(3, repository.count());
@@ -52,7 +52,7 @@ public class FxinvalidRepositoryTest {
 
 	@Test
 	public void delete_01() throws Exception {
-		repository.save(new Fxinvalid(new Date(), "Invalid Record", "file path"));
+		repository.save(new Fxinvalid("Invalid Record", "file path"));
 
 		for (Fxinvalid Fxinvalid : repository.findAll()) {
 			repository.delete(repository.findOne(Fxinvalid.getId()));
@@ -70,9 +70,9 @@ public class FxinvalidRepositoryTest {
 	@Test
 	public void find_01() throws Exception {
 		List<Fxinvalid> Fxinvalids = new ArrayList<Fxinvalid>();
-		Fxinvalids.add(new Fxinvalid(new Date(), "Invalid Record", "file path"));
-		Fxinvalids.add(new Fxinvalid(new Date(), "Invalid Record", "file path"));
-		Fxinvalids.add(new Fxinvalid(new Date(), "Invalid Record", "file path"));
+		Fxinvalids.add(new Fxinvalid("Invalid Record", "file path"));
+		Fxinvalids.add(new Fxinvalid("Invalid Record", "file path"));
+		Fxinvalids.add(new Fxinvalid("Invalid Record", "file path"));
 
 		repository.save(Fxinvalids);
 		int count = 0;
