@@ -5,11 +5,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 
+import org.ralphmorales.fx.fxHarvester.entities.Fxinvalid;
 import org.ralphmorales.fx.fxHarvester.entities.Fxrecord;
-import org.ralphmorales.fx.fxHarvester.repositories.FxrecordRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FxrecordService {
+public class FxinvalidService {
 
 	@Autowired
 	private EntityManager entityManager;
@@ -27,15 +28,18 @@ public class FxrecordService {
 	
 	private static final Logger log = LoggerFactory.getLogger(FxrecordService.class);
 	
-	public void addFxRecords(List<String[]> records) throws ParseException{
+	public void addInvalidRecords(Map<String,List<String>> invalidData) throws ParseException{
 		entityManager.flush();
 		int i = 0;
-		for(String[] record : records) {
+		
+		Map.Entry<String,List<String>> entry=invalidData.entrySet().iterator().next();
+		String filePath= entry.getKey();
+		List<String> invalidRecords=entry.getValue();
+		
+		for(String record : invalidRecords) {
 			i++;
-			SimpleDateFormat formatter = new SimpleDateFormat("M/d/yyyy hh:mm");
-			Date dealCreated = formatter.parse(record[0]);
 			
-			entityManager.persist(new Fxrecord(dealCreated, record[1], record[2], new BigDecimal(record[3])));
+			entityManager.persist(new Fxinvalid(record, filePath));
 			
 			if (i % batchSize == 0) {
 		        entityManager.flush();
