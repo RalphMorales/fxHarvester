@@ -56,7 +56,7 @@ public class AccumulativeDataRepositoryTest {
 	public void find_01() throws Exception {
 		repository.save(new AccumulativeData("AED", 100));
 	
-		AccumulativeData data = repository.findByOrderingCurrency("AED");
+		AccumulativeData data = repository.findOne("AED");
 		assertNotNull(data);
 		assertTrue( data.getCountOfDeals().equals(100));
 	}
@@ -65,7 +65,7 @@ public class AccumulativeDataRepositoryTest {
 	public void find_02() throws Exception {
 		repository.save(new AccumulativeData("AED", 100));
 	
-		AccumulativeData data = repository.findByOrderingCurrency("USD");
+		AccumulativeData data = repository.findOne("USD");
 		assertNull(data);
 		
 	}
@@ -75,14 +75,14 @@ public class AccumulativeDataRepositoryTest {
 	public void delete_01() throws Exception {
 		repository.save(new AccumulativeData("AED", 100));
 
-		repository.delete(repository.findByOrderingCurrency("AED"));
+		repository.delete(repository.findOne("AED"));
 		
 		assertEquals(0, repository.count());
 	}
 
 	@Test(expected = EmptyResultDataAccessException.class)
 	public void delete_02() throws Exception {
-		repository.delete(new Long(1));
+		repository.delete("Invalid");
 
 	}
 
