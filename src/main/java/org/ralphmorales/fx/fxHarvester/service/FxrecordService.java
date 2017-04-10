@@ -22,6 +22,9 @@ public class FxrecordService {
 	@Autowired
 	private EntityManager entityManager;
 	
+	@Autowired
+	private AccumulativeDataService accumulativeDataService;
+	
 	@Value("${spring.jpa.hibernate.jdbc.batch_size}")
 	private int batchSize;
 	
@@ -36,6 +39,7 @@ public class FxrecordService {
 			Date dealCreated = formatter.parse(record[0]);
 			
 			entityManager.persist(new Fxrecord(dealCreated, record[1], record[2], new BigDecimal(record[3])));
+			entityManager.merge(accumulativeDataService.getAccumulativeData(record[1]));
 			
 			if (i % batchSize == 0) {
 		        entityManager.flush();

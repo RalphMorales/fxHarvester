@@ -1,15 +1,10 @@
 package org.ralphmorales.fx.fxHarvester.entities;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Fxinvalid {
@@ -35,7 +30,7 @@ public class Fxinvalid {
 		this.id = id;
 	}
 	
-	@Column(name="invalidRecord", nullable=false)
+	@Column(nullable=false)
 	public String getInvalidRecord() {
 		return invalidRecord;
 	}
@@ -43,7 +38,7 @@ public class Fxinvalid {
 		this.invalidRecord = invalidRecord;
 	}
 	
-	@Column(name="fileName", nullable=false)
+	@Column(nullable=false)
 	public String getFileName() {
 		return fileName;
 	}

@@ -7,10 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AccumulativeDataRepository extends CrudRepository<AccumulativeData, Long>{
-
-	@Query("SELECT a FROM AccumulativeData a WHERE LOWER(a.orderingCurrency) = LOWER(:orderingCurrency)")
-    public AccumulativeData findByOrderingCurrency(@Param("orderingCurrency") String orderingCurrency);
+public interface AccumulativeDataRepository extends CrudRepository<AccumulativeData, String>{
 	
 }
 

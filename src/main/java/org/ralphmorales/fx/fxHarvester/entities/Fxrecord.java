@@ -39,7 +39,7 @@ public class Fxrecord {
 		this.id = id;
 	}
 	
-	@Column(name="dateCreated", nullable=false)
+	@Column(nullable=false)
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDateCreated() {
 		return dateCreated;
@@ -48,7 +48,7 @@ public class Fxrecord {
 		this.dateCreated = dateCreated;
 	}
 	
-	@Column(name="orderingCurrency", nullable=false)
+	@Column(nullable=false)
 	public String getOrderingCurrency() {
 		return orderingCurrency;
 	}
@@ -56,7 +56,7 @@ public class Fxrecord {
 		this.orderingCurrency = orderingCurrency;
 	}
 	
-	@Column(name="toCurrency", nullable=false)
+	@Column(nullable=false)
 	public String getToCurrency() {
 		return toCurrency;
 	}
@@ -64,7 +64,7 @@ public class Fxrecord {
 		this.toCurrency = toCurrency;
 	}
 	
-	@Column(name="amount", nullable=false)
+	@Column(nullable=false)
 	public BigDecimal getAmount() {
 		return amount;
 	}
