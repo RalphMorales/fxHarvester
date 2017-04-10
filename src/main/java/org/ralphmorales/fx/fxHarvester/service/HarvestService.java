@@ -39,6 +39,9 @@ public class HarvestService {
 
 		for (File currentFile : files) {
 			if (fileLogService.addFileLog(currentFile.getName(), new Date())) {
+				
+				log.info("Importing... {}" + currentFile.getName());
+				
 				Map<List<String[]>, Map<String, List<String>>> data = RecordUtils
 						.parseCSVtoRecord(currentFile, fileSeparator, new FxrecordValidator());
 				Map.Entry<List<String[]>, Map<String, List<String>>> entry = data.entrySet().iterator().next();
